@@ -2440,11 +2440,11 @@ mongodb-memory-server-global@7.4.0:
     mongodb-memory-server-core "7.4.0"
     tslib "^2.3.0"
 
-mongodb-memory-server@7.4.0:
-  version "7.4.0"
-  resolved "https://registry.yarnpkg.com/mongodb-memory-server/-/mongodb-memory-server-7.4.0.tgz#25ca8455bb03c73da871de8fb8339d4fdbe36d90"
+mongodb-memory-server@7.4.1:
+  version "7.4.1"
+  resolved "https://registry.yarnpkg.com/mongodb-memory-server/-/mongodb-memory-server-7.4.1.tgz#bd9266d3c34ff7438813d39eb3b1c00da374b5c7"
   dependencies:
-    mongodb-memory-server-core "7.4.0"
+    mongodb-memory-server-core "7.4.1"
     tslib "^2.3.0"
 
 mongodb@4.1.2:

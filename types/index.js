@@ -1,4 +1,10 @@
-module.exports = `
+const { gql } = require('apollo-server-express');
+
+module.exports = gql`
+    type Query {
+        properties(city: String): [Listing]
+    }
+
     type Listing {
         favoriteCount: Int
         privateRemarks: String

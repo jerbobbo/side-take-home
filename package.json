@@ -9,17 +9,23 @@
   "scripts": {
     "test": "jest",
     "start:app": "node index.js",
-    "start:db": "node database.js"
+    "start:db": "node database.js",
+    "commit": "git-cz"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "apollo-datasource-rest": "^3.2.0",
     "apollo-server-express": "3.3.0",
+    "config": "^3.3.6",
     "express": "4.17.1",
+    "graphql": "^15.6.0",
     "jest": "27.2.0",
-    "mongodb": "4.1.2"
+    "mongodb": "4.1.2",
+    "morgan": "^1.10.0"
   },
   "devDependencies": {
+    "git-cz": "^4.7.6",
     "mongodb-memory-server": "7.4.0",
     "mongodb-memory-server-core": "7.4.1",
     "mongodb-memory-server-global": "7.4.0"

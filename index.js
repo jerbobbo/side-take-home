@@ -1,15 +1,15 @@
 const express = require('express');
 const morgan = require('morgan');
-const app = express();
 const bearerToken = require('express-bearer-token');
 const config = require('config');
 const { ApolloServer } = require('apollo-server-express');
 const typeDefs = require('./types');
 const { SimplyRetsAPI } = require('./stores/simplyrets/simply-rets-api');
 const resolvers = require('./resolvers');
-const { connectDb, getListingsCollection } = require('./stores/mongodb/store');
+const { connectDb, getListingsCollection, closeDb } = require('./stores/mongodb/store');
 const { Listings } = require('./stores/mongodb/Listings');
 const bearerAuth = require('./middleware/bearer-auth');
+const app = express();
 
 (async () => {
     const isDevelopment = config.get('env') === 'development';
@@ -33,7 +33,7 @@ const bearerAuth = require('./middleware/bearer-auth');
             ],
             playground: isDevelopment,
             debug: isDevelopment,
-            introspection: true
+            introspection: isDevelopment
         });
         
         await server.start();
@@ -47,7 +47,18 @@ const bearerAuth = require('./middleware/bearer-auth');
 
 
     const port = config.get('server.port');
-    app.listen({ port }, () =>
+    const expressServer = app.listen({ port }, () =>
         console.log(`Listening on http://localhost:${port}/graphql`)
     );
+    
+    const shutdown = function() {
+        console.log('Received kill signal, shutting down gracefully');
+        closeDb();
+        expressServer.close(() => {
+            console.log('Closed out remaining connections');
+            process.exit(0);
+        });
+    }
+    process.on('SIGTERM', shutdown);
+    process.on('SIGINT', shutdown);
 })()

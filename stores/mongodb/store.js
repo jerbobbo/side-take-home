@@ -4,12 +4,13 @@ const config = require('config');
 let db;
 let listingsCollection;
 let usersCollection;
+let client;
 
 const connectDb = async function() {
   const uri = config.get('mongodb.uri');
   const name = config.get('mongodb.name');
   try {
-    const client = await MongoClient.connect(uri);
+    client = await MongoClient.connect(uri);
     console.log(`Mongo database '${name}' connected at ${uri}`);
     db = client.db(name);
     listingsCollection = db.collection('listings');
@@ -25,9 +26,13 @@ const getListingsCollection = function() {
 const getUsersCollection = function() {
   return usersCollection;
 }
+const closeDb = function() {
+  console.log('Closing MongoDb connection.')
+  client.close()
+}
 
 module.exports = {
-  db,
+  closeDb,
   connectDb,
   getListingsCollection,
   getUsersCollection

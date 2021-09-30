@@ -6,33 +6,36 @@ const typeDefs = require('./types');
 const { SimplyRetsAPI } = require('./stores/simplyrets/simply-rets-api');
 const resolvers = require('./resolvers');
 const config = require('config');
+const { connectDb, getListingsCollection } = require('./stores/mongodb/store');
+const { Listings } = require('./stores/mongodb/Listings');
 
 (async () => {
     const isDevelopment = config.get('env') === 'development';
-
-    app.use(morgan('combined'));
-    const server = new ApolloServer({
-     typeDefs,
-     resolvers,
-     dataSources: () => ({
-        simplyRetsApi: new SimplyRetsAPI()
-     }),
-     plugins: [
-        {
-            requestDidStart: ( requestContext ) => {
-                const query = requestContext.request.query.replace( /\s+/g, ' ' ).trim();
-                const variables = JSON.stringify( requestContext.request.variables );
-                console.log( new Date().toISOString(), `- [Request Started] { query: ${ query }, variables: ${ variables }, operationName: ${ requestContext.request.operationName } }` );
-            }
-         }
-     ],
-     playground: isDevelopment,
-     debug: isDevelopment,
-     introspection: true
-    });
-    
     try {
+        await connectDb();
+        const server = new ApolloServer({
+            typeDefs,
+            resolvers,
+            dataSources: () => ({
+                simplyRetsApi: new SimplyRetsAPI(),
+                listings: new Listings({ store: getListingsCollection() })
+            }),
+            plugins: [
+                {
+                    requestDidStart: ( requestContext ) => {
+                        const query = requestContext.request.query.replace( /\s+/g, ' ' ).trim();
+                        const variables = JSON.stringify( requestContext.request.variables );
+                        console.log( new Date().toISOString(), `- [Request Started] { query: ${ query }, variables: ${ variables }, operationName: ${ requestContext.request.operationName } }` );
+                    }
+                }
+            ],
+            playground: isDevelopment,
+            debug: isDevelopment,
+            introspection: true
+        });
+        
         await server.start();
+        app.use(morgan('combined'));
         server.applyMiddleware({ app, path:"/graphql" });
     } catch (error) {
         console.error(error);

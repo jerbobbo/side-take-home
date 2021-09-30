@@ -15,6 +15,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "apollo-datasource": "^3.1.0",
     "apollo-datasource-rest": "^3.2.0",
     "apollo-server-express": "3.3.0",
     "config": "^3.3.6",

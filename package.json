@@ -20,6 +20,7 @@
     "apollo-server-express": "3.3.0",
     "config": "^3.3.6",
     "express": "4.17.1",
+    "express-bearer-token": "^2.4.0",
     "graphql": "^15.6.0",
     "jest": "27.2.0",
     "mongodb": "4.1.2",

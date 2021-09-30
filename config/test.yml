@@ -1,0 +1,10 @@
+env: test
+server:
+  port: 4000
+simplyRets:
+  url: https://api.simplyrets.com/properties
+  user: simplyrets
+  password: simplyrets
+mongodb:
+  uri: mongodb://127.0.0.1:27017/
+  name: properties

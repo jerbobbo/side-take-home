@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test Apollo Server Gets listings by city 1`] = `
+Object {
+  "data": Object {
+    "properties": Array [
+      Object {
+        "address": Object {
+          "city": "Tomball",
+          "country": "United States",
+          "crossStreet": "High St / Main St. E",
+          "full": "32738 South VISTA MADERA Lane #F16",
+          "postalCode": "77024",
+          "state": "Texas",
+          "streetName": "South VISTA MADERA Lane",
+          "streetNumber": 32738,
+          "streetNumberText": "32738",
+          "unit": "F16",
+        },
+        "disclaimer": "This information is believed to be accurate, but without warranty.",
+        "favoriteCount": 0,
+        "listPrice": 2893021,
+        "listingId": "6323997",
+        "property": Object {
+          "area": 1562,
+          "bedrooms": 2,
+        },
+      },
+    ],
+  },
+  "errors": undefined,
+  "extensions": undefined,
+  "http": Object {
+    "headers": Headers {
+      Symbol(map): Object {},
+    },
+  },
+}
+`;
+
+exports[`Test Apollo Server Increments favorite count with markAsFavorite mutation 1`] = `
+Object {
+  "data": Object {
+    "markAsFavorite": Object {
+      "favoriteCount": 1,
+      "message": "Listing 49699701 successfully marked as favorite.",
+    },
+  },
+  "errors": undefined,
+  "extensions": undefined,
+  "http": Object {
+    "headers": Headers {
+      Symbol(map): Object {},
+    },
+  },
+}
+`;

@@ -10,9 +10,13 @@ class SimplyRetsAPI extends RESTDataSource {
   async getListings(city) {
     try {
       const path = config.get('simplyRets.url');
-      const queryParams = new URLSearchParams({ cities: city });
+      let queryParams = new URLSearchParams();
+      if (city) {
+        queryParams.set('cities', city);
+      }
       console.log('Simply Rets request', { path, queryParams });
       const response = await this.get(path, queryParams);
+      // console.log('response', response);
       return response;
     } catch (error) {
       console.error(error);

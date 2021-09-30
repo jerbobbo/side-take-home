@@ -7,22 +7,43 @@ class Listings extends DataSource {
   }
 
   async findOrCreateListingById(listingId) {
-    let listing = await this.store.find({ listingId }).toArray();
-    if (listing.length) {
-      return listing[0];
+    try {
+      const foundListing = await this.store.findOne({ listingId });
+      if (foundListing) {
+        return foundListing;
+      }
+      await this.store.insertOne({ listingId, favoriteCount: 0 });
+      const newListing = await this.store.findOne({ listingId });
+      return newListing;
+    } catch(err) {
+      console.error(err);
+      throw err;
     }
-    listing = await this.store.insertOne({ listingId, favoriteCount: 0 });
-    return listing;
   }
 
   async addToFavoriteCount(listingId) {
-    const listing = await this.findOrCreateListingById(listingId);
-    await this.store.updateOne({ listingId }, { favoriteCount: listing.favoriteCount++ });
+    try {
+      await this.store.updateOne(
+        { listingId },
+        { $inc: { favoriteCount: 1 } },
+        { upsert: true }
+      );
+      const updatedListing = await this.store.findOne({ listingId });
+      return updatedListing;
+    } catch(err) {
+      console.error(err);
+      throw err;
+    }
   }
 
   async getFavoriteCountById(listingId) {
-    const listing = await this.findOrCreateListingById(listingId);
-    return listing.favoriteCount;
+    try {
+      const listing = await this.findOrCreateListingById(listingId);
+      return listing.favoriteCount;
+    } catch(err) {
+      console.error(err);
+      throw err;
+    }
   }
 }
 

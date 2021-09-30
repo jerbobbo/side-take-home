@@ -5,6 +5,15 @@ module.exports = gql`
         properties(city: String): [Listing]
     }
 
+    type Mutation {
+        markAsFavorite(listingId: String!): FavoriteResponse
+    }
+
+    type FavoriteResponse {
+        message: String
+        favoriteCount: Int
+    }
+
     type Listing {
         favoriteCount: Int
         privateRemarks: String

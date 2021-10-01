@@ -1,7 +1,7 @@
 const { ApolloServer } = require('apollo-server-express');
-const { Listings } = require('../stores/mongodb/Listings');
-const { getListingsCollection } = require('../stores/mongodb/store');
-const { SimplyRetsAPI } = require('../stores/simplyrets/simply-rets-api');
+const { Listings } = require('../data-sources/mongodb/Listings');
+const { getListingsCollection } = require('../data-sources/mongodb/store');
+const { SimplyRetsAPI } = require('../data-sources/simplyrets/simply-rets-api');
 const typeDefs = require('../types');
 const resolvers = require('../resolvers');
 const { getListingsMock } = require('./resources/simplyRetsMocks');
@@ -27,7 +27,7 @@ describe('Test Apollo Server', () => {
       }),
     });
   });
-  
+
   it('Gets listings by city', async () => {
     // mock the dataSource's underlying find methods
     const getListingsSpy = jest

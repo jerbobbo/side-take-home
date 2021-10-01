@@ -10,7 +10,6 @@ class Listings extends DataSource {
     try {
       const foundListing = await this.store.findOne({ listingId });
       if (foundListing) {
-        console.log('foundListing', foundListing);
         return foundListing;
       }
       await this.store.insertOne({ listingId, favoriteCount: 0 });

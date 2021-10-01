@@ -4,10 +4,10 @@ const bearerToken = require('express-bearer-token');
 const config = require('config');
 const { ApolloServer } = require('apollo-server-express');
 const typeDefs = require('./types');
-const { SimplyRetsAPI } = require('./stores/simplyrets/simply-rets-api');
+const { SimplyRetsAPI } = require('./data-sources/simplyrets/simply-rets-api');
 const resolvers = require('./resolvers');
-const { connectDb, getListingsCollection, closeDb } = require('./stores/mongodb/store');
-const { Listings } = require('./stores/mongodb/Listings');
+const { connectDb, getListingsCollection, closeDb } = require('./data-sources/mongodb/store');
+const { Listings } = require('./data-sources/mongodb/Listings');
 const bearerAuth = require('./middleware/bearer-auth');
 const app = express();
 

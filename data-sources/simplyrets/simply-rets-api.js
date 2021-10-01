@@ -16,7 +16,6 @@ class SimplyRetsAPI extends RESTDataSource {
       }
       console.log('Simply Rets request', { path, queryParams });
       const response = await this.get(path, queryParams);
-      // console.log('response', response);
       return response;
     } catch (error) {
       console.error(error);

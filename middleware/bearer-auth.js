@@ -1,5 +1,5 @@
 const { AuthenticationError } = require("apollo-server-errors");
-const { getUsersCollection } = require("../stores/mongodb/store");
+const { getUsersCollection } = require("../data-sources/mongodb/store");
 
 module.exports = async function(req, res, next) {
   const { token } = req;

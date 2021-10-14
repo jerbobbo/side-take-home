@@ -2362,9 +2362,9 @@ mongodb-memory-server-core@7.4.0:
     uuid "^8.3.1"
     yauzl "^2.10.0"
 
-mongodb-memory-server-core@7.4.1:
-  version "7.4.1"
-  resolved "https://registry.yarnpkg.com/mongodb-memory-server-core/-/mongodb-memory-server-core-7.4.1.tgz#2e9f137c56014af9fad9f79294389d3eecafe3b4"
+mongodb-memory-server-core@7.4.4:
+  version "7.4.4"
+  resolved "https://registry.yarnpkg.com/mongodb-memory-server-core/-/mongodb-memory-server-core-7.4.4.tgz#8dbbb49563eac2654b81086f5d7f594f70618c72"
   dependencies:
     "@types/tmp" "^0.2.0"
     async-mutex "^0.3.2"

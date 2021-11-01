@@ -29,7 +29,7 @@
   "devDependencies": {
     "git-cz": "^4.7.6",
     "mongodb-memory-server": "7.4.0",
-    "mongodb-memory-server-core": "7.4.1",
+    "mongodb-memory-server-core": "8.0.0",
     "mongodb-memory-server-global": "7.4.0"
   }
 }

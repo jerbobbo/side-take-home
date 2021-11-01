@@ -687,9 +687,9 @@
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/@types/stack-utils/-/stack-utils-2.0.1.tgz#20f18294f797f2209b5f65c8e3b5c8e8261d127c"
 
-"@types/tmp@^0.2.0":
-  version "0.2.1"
-  resolved "https://registry.yarnpkg.com/@types/tmp/-/tmp-0.2.1.tgz#83ecf4ec22a8c218c71db25f316619fe5b986011"
+"@types/tmp@^0.2.0", "@types/tmp@^0.2.2":
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/@types/tmp/-/tmp-0.2.2.tgz#424537a3b91828cb26aaf697f21ae3cd1b69f7e7"
 
 "@types/webidl-conversions@*":
   version "6.1.1"
@@ -2362,11 +2362,11 @@ mongodb-memory-server-core@7.4.0:
     uuid "^8.3.1"
     yauzl "^2.10.0"
 
-mongodb-memory-server-core@7.4.1:
-  version "7.4.1"
-  resolved "https://registry.yarnpkg.com/mongodb-memory-server-core/-/mongodb-memory-server-core-7.4.1.tgz#2e9f137c56014af9fad9f79294389d3eecafe3b4"
+mongodb-memory-server-core@8.0.0:
+  version "8.0.0"
+  resolved "https://registry.yarnpkg.com/mongodb-memory-server-core/-/mongodb-memory-server-core-8.0.0.tgz#2dbc88c190b9fa0385110b19bdc7bd325a69a7ff"
   dependencies:
-    "@types/tmp" "^0.2.0"
+    "@types/tmp" "^0.2.2"
     async-mutex "^0.3.2"
     camelcase "^6.1.0"
     debug "^4.2.0"
@@ -2374,13 +2374,12 @@ mongodb-memory-server-core@7.4.1:
     get-port "^5.1.1"
     https-proxy-agent "^5.0.0"
     md5-file "^5.0.0"
-    mkdirp "^1.0.4"
-    mongodb "^3.6.9"
+    mongodb "^4.1.3"
     new-find-package-json "^1.1.0"
     semver "^7.3.5"
     tar-stream "^2.1.4"
     tmp "^0.2.1"
-    tslib "^2.3.0"
+    tslib "^2.3.1"
     uuid "^8.3.1"
     yauzl "^2.10.0"
 
@@ -2419,6 +2418,16 @@ mongodb@^3.6.9:
     safe-buffer "^5.1.2"
   optionalDependencies:
     saslprep "^1.0.0"
+
+mongodb@^4.1.3:
+  version "4.1.3"
+  resolved "https://registry.yarnpkg.com/mongodb/-/mongodb-4.1.3.tgz#8bf24d782ba3f3833201f4e60b0307d87980ba71"
+  dependencies:
+    bson "^4.5.2"
+    denque "^2.0.1"
+    mongodb-connection-string-url "^2.0.0"
+  optionalDependencies:
+    saslprep "^1.0.3"
 
 morgan@^1.10.0:
   version "1.10.0"
